@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title>秦铜车马——中国古代机械复原设计</title>
+        <style>
+            :root {
+                --primary-color: #5a4d41;
+                --accent-color: #b89f7e;
+                --text-color: #333;
+            }
+            .header {
+                background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.7)), url('1.png') center/cover;
+                height: 70vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                text-align: center;
+                padding: 2rem 4rem;
+                flex-direction: column;
+                gap: 8px;
+                animation: titleFade 1.5s ease-out;
+                position: relative;
+                backdrop-filter: blur(2px);
+            }
+            .header::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(45deg, 
+                    rgba(184, 159, 126, 0.1) 0%, 
+                    rgba(90, 77, 65, 0.15) 100%);
+                pointer-events: none;
+            }
+            @keyframes titleFade {
+                0% { opacity: 0; transform: translateY(20px); }
+                100% { opacity: 1; transform: translateY(0); }
+            }
+            body {
+                font-family: '思源宋体', '宋体', SimSun, serif;
+                line-height: 1.8;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+                background: #f5f3f0;
+                text-indent: 2em;
+                scroll-behavior: smooth;
+            }
+    
+            .exhibit-section {
+                background: white;
+                padding: 30px;
+                margin: 30px 0;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+                border-radius: 8px;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .exhibit-section:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            }
+            h1 {
+                font-weight: 800;
+                font-size: 3.2rem;
+                color: var(--accent-color);
+                text-shadow: 
+                    0 0 16px rgba(184, 159, 126, 0.9),
+                    0 4px 8px rgba(0,0,0,0.6),
+                    1px 1px 1px rgba(0,0,0,0.3);
+                letter-spacing: 1.1px;
+                font-family: '华文楷体', STKaiti, serif;
+                margin: 0;
+                line-height: 1.23;
+                position: relative;
+                padding: 0 20px;
+                -webkit-text-stroke: 0.5px rgba(0,0,0,0.2);
+                transform-style: preserve-3d;
+            }
+            h1:nth-child(1) {
+                animation-delay: 0.2s;
+            }
+            h1:nth-child(2) {
+                animation-delay: 0.4s;
+            }
+            h2 {
+                color: var(--primary-color);
+                border-bottom: 2px solid var(--accent-color);
+                padding-bottom: 10px;
+                position: relative;
+                padding-left: 1.2em;
+                font-size: 1.8rem;
+            }
+            h2::before {
+                content: "◆";
+                position: absolute;
+                left: 0;
+                top: -2px;
+                color: var(--accent-color);
+                font-size: 1.2em;
+            }
+            p {
+                font-weight: 900;
+              }
+            .figure-group {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+                margin: 20px 0;
+                justify-content: center;
+                justify-items: center;
+                opacity: 0;
+                transform: translateY(30px);
+                animation: contentFade 1s ease forwards;
+            }
+            @keyframes contentFade {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            figure {
+                margin: 0;
+                background: #f8f6f3;
+                padding: 15px;
+                width: 100%;
+                border-radius: 6px;
+                transition: all 0.3s ease;
+                overflow: hidden;
+                position: relative;
+                cursor: pointer;
+                transform-origin: center bottom;
+            }
+            figure::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(120deg, 
+                    rgba(184, 159, 126, 0.1) 0%, 
+                    rgba(90, 77, 65, 0.05) 100%);
+                z-index: 1;
+                pointer-events: none;
+            }
+            figure:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            }
+            img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 0 auto;
+                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                border-radius: 4px;
+                transform: scale(0.98);
+                filter: grayscale(15%);
+            }
+            figure:hover img {
+                transform: scale(1.02) translateY(-3px);
+                filter: grayscale(0%);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            }
+            figure {
+                margin: 0;
+                background: #f8f6f3;
+                padding: 15px;
+            }
+            figcaption {
+                font-size: 0.9em;
+                font-weight: 700;
+                color: #666;
+                margin-top: 10px;
+                padding: 8px 12px;
+                background: rgba(255,255,255,0.9);
+                border-radius: 4px;
+                display: inline-block;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            }
+            video {
+                width: 100%;
+                margin: 20px 0;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                transition: all 0.3s ease;
+                transform: scale(0.98);
+                filter: brightness(0.98);
+            }
+            video:hover {
+                transform: scale(1.01) translateY(-2px);
+                filter: brightness(1.05);
+                box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            }
+    
+            @media (max-width: 768px) {
+                .header {
+                    padding: 1.5rem 1rem;
+                    gap: 6px;
+                    height: 60vh;
+                    backdrop-filter: none;
+                }
+                .header h1 {
+                    font-size: 2.4rem;
+                    -webkit-text-stroke-width: 0.3px;
+                    text-shadow: 
+                        0 0 12px rgba(184, 159, 126, 0.8),
+                        0 2px 4px rgba(0,0,0,0.5);
+                }
+                h2 {
+                    font-size: 1.5rem;
+                    padding-left: 1em;
+                }
+                h2::before {
+                    font-size: 1em;
+                    top: -1px;
+                }
+                .figure-group {
+                    grid-template-columns: 1fr;
+                    animation: none;
+                    opacity: 1;
+                    transform: none;
+                }
+                figure {
+                    margin-bottom: 15px;
+                }
+                img {
+                    filter: grayscale(0%);
+                }
+            }
+        </style>
+    </head>
+<body>
+    <header class="header">
+        <h1>秦铜车马</h1>
+        <h1>中国古代机械复原设计</h1>
+    </header>
+
+    <div class="exhibit-section">
+        <h2>沉浸式文化导览区</h2>
+        
+        <article>
+            <h3>1、出土记录</h3>
+            <div class="figure-group">
+                <figure>
+                    <img src="2.jpeg" alt="铜车马出土现场">
+                    <figcaption style="text-align: center;">铜车马随葬坑原始状态（1980年摄）&nbsp;</figcaption>
+                </figure>
+                <figure>
+                    <img src="3.jpeg" alt="修复过程记录">
+                    <figcaption style="text-align: center;">文物专家进行碎片整理（1982年工作照）&nbsp;</figcaption>
+                </figure>
+            </div>
+            <p>铜车马随葬坑为长方形竖穴土坑，底部设木椁安置两乘铜马车。虽木椁腐朽导致上层填土塌压，使铜车马碎裂为3000余片，所幸墓坑未经盗扰，碎片位置保持原始状态。自1980年发现至1988年，历时八年完成两乘马车的完整复原。</p>
+        </article>
+
+        <article>
+            <h3>2、历史背景</h3>
+            <div class="figure-group">
+                <figure>
+                    <img src="4.png" alt="一号铜马车">
+                    <figcaption style="text-align: center;">秦陵一号铜马车（立车）&nbsp;</figcaption>
+                </figure>
+                <figure>
+                    <img src="5.png" alt="二号铜马车">
+                    <figcaption style="text-align: center;">秦陵二号铜马车（安车）&nbsp;</figcaption>
+                </figure>
+            </div>
+            <p>1978年6月出土于秦陵封土西侧的秦铜车马，通体彩绘，结构精巧，现藏秦始皇帝陵博物院。两乘马车分别代表"立车"与"安车"形制，总重逾14千克，采用铸造、镶嵌、焊接等十余种工艺，其彩绘纹饰与浮雕结合，精准再现马车各部位材质与构造，堪称中国古代青铜铸造技艺的巅峰之作。</p>
+        </article>
+
+        <article>
+            <h3>3、构造与工艺</h3>
+            <figure>
+                <img src="6.png" alt="结构解析图">
+                <figcaption style="text-align: center;">铜车马结构分解示意图&nbsp;&nbsp;</figcaption>
+            </figure>
+            <p>全车采用分体铸造后组装的工艺体系，运用嵌铸、焊接、子母扣等机械连接工艺，单辕双轮的形制体现秦代典型马车特征。金银饰件的运用与蓝、绿、白三色彩绘相得益彰，展现秦代工匠对材质表现的深刻理解。</p>
+        </article>
+    </div>
+
+    <div class="exhibit-section">
+        <h2>核心技术展示区</h2>
+        
+        <article>
+            <h3>1、数字建模工程</h3>
+            <div class="figure-group">
+                <figure>
+                    <img src="7.png" alt="三维建模过程">
+                    <figcaption style="text-align: center;">车轮三维建模过程&nbsp;&nbsp;</figcaption>
+                </figure>
+                <figure>
+                    <img src="8.png" alt="零件装配演示">
+                    <figcaption style="text-align: center;">车辕装配约束分析&nbsp;&nbsp;</figcaption>
+                </figure>
+                <figure>
+                    <img src="9.png" alt="车厢结构还原">
+                    <figcaption style="text-align: center;">车厢结构数字还原&nbsp;&nbsp;</figcaption>
+                </figure>
+                <figure>
+                    <img src="10.png" alt="马匹造型建模">
+                    <figcaption style="text-align: center;">马匹造型数字建模&nbsp;&nbsp;</figcaption>
+                </figure>
+                <figure>
+                    <img src="11.png" alt="纹饰还原">
+                    <figcaption style="text-align: center;">传统纹饰数字还原&nbsp;&nbsp;</figcaption>
+                </figure>
+            </div>
+            <p>基于《中国古代机械文明史》等典籍记载，通过SolidWorks进行精密三维建模，严格遵循出土文物尺寸数据。</p>
+        </article>
+
+        <article>
+            <h3>2、智能造物工坊</h3>
+            <div class="figure-group">
+                <figure>
+                    <img src="12.png" alt="3D打印过程">
+                    <figcaption style="text-align: center;">车轮部件3D打印&nbsp;&nbsp;</figcaption>
+                </figure>
+                <figure>
+                    <img src="13.png" alt="激光切割应用">
+                    <figcaption style="text-align: center;">马匹构件激光切割&nbsp;&nbsp;</figcaption>
+                </figure>
+                <figure>
+                    <img src="14.png" alt="金属粉末烧结">
+                    <figcaption style="text-align: center;">青铜部件金属粉末烧结&nbsp;&nbsp;</figcaption>
+                </figure>
+                <figure>
+                    <img src="15.png" alt="激光雕刻细节">
+                    <figcaption style="text-align: center;">装饰纹样激光雕刻细节&nbsp;&nbsp;</figcaption>
+                </figure>
+                <figure>
+                    <img src="16.png" alt="表面质感处理">
+                    <figcaption style="text-align: center;">铸造表面质感处理&nbsp;&nbsp;</figcaption>
+                </figure>
+            </div>
+            <p>采用分层制造技术展示不同材料的应用效果：青铜部件使用金属粉末烧结，装饰纹样采用精密激光雕刻，充分还原古代铸造的表面质感。</p>
+        </article>
+
+        <article>
+            <h3>3、虚拟仿真动画</h3>
+            <video controls poster="17.png">
+                <source src="视频1.mp4" type="video/mp4">
+                <track label="中文" kind="subtitles" srclang="zh" src="captions.vtt" default>
+            </video>
+            <p>通过Cinema 4D实现的运动仿真，精确还原车马联动机制。特别呈现青铜氧化前的金黄光泽，图17展示光影效果如何增强结构表现的清晰度。</p>
+        </article>
+    </div>
+</body>
+</html>
