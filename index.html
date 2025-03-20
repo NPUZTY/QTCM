@@ -1,265 +1,316 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>秦铜车马——中国古代机械复原设计</title>
-    <style>
-        :root {
-            --primary-color: #5a4d41;
-            --accent-color: #b89f7e;
-            --text-color: #333;
-        }
-        .header {
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.7)), url('1.png') center/cover;
-            min-height: 50vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            flex-direction: column;
-            gap: 1rem;
-            position: relative;
-        }
-        h1 {
-            font-weight: 700;
-            font-size: 2rem;
-            color: var(--accent-color);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
-            line-height: 1.3;
-            font-family: '华文楷体', STKaiti, serif;
-            margin: 0;
-            padding: 0 10px;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, '思源宋体', '宋体', SimSun, serif;
-            line-height: 1.6;
-            margin: 0 auto;
-            padding: 15px;
-            background: #f5f3f0;
-            text-indent: 2em;
-            -webkit-text-size-adjust: 100%;
-        }
-        .exhibit-section {
-            background: white;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            border-radius: 8px;
-        }
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 8px;
-            font-size: 1.4rem;
-            margin: 1.5em 0 1em;
-            padding-left: 1em;
-        }
-        h2::before {
-            content: "◆";
-            margin-right: 0.5em;
-            color: var(--accent-color);
-        }
-        p {
-            font-size: 15px;
-            line-height: 1.8;
-            color: #444;
-            margin: 1em 0;
-        }
-        .figure-group {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin: 15px 0;
-        }
-        figure {
-            margin: 0;
-            background: #f8f6f3;
-            padding: 12px;
-            border-radius: 6px;
-            overflow: hidden;
-        }
-        img {
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-        }
-        figcaption {
-            font-size: 13px;
-            color: #666;
-            margin-top: 8px;
-            text-align: center;
-            line-height: 1.4;
-            padding: 6px 10px;
-        }
-        video {
-            width: 100%;
-            border-radius: 8px;
-            margin: 15px 0;
-        }
-
-        /* 平板及以上适配 */
-        @media (min-width: 480px) {
-            h1 { font-size: 2.4rem; }
-            h2 { font-size: 1.5rem; }
-            p { font-size: 16px; }
-            .header { min-height: 60vh; }
-        }
-
-        /* PC端适配 */
-        @media (min-width: 768px) {
-            body {
-                max-width: 1200px;
-                padding: 30px;
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>秦铜车马——中国古代机械复原设计</title>
+        <style>
+            :root {
+                --primary-color: #5a4d41;
+                --accent-color: #b89f7e;
+                --text-color: #333;
             }
             .header {
-                height: 70vh;
-                padding: 2rem 4rem;
-                gap: 1.5rem;
+                background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.7)), url('1.png') center/cover;
+                min-height: 50vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                text-align: center;
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+                position: relative;
             }
             h1 {
-                font-size: 3.2rem;
-                text-shadow: 0 0 16px rgba(184, 159, 126, 0.9),
-                             0 4px 8px rgba(0,0,0,0.6);
+                font-weight: 700;
+                font-size: 2rem;
+                color: var(--accent-color);
+                text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+                line-height: 1.3;
+                font-family: '华文楷体', STKaiti, serif;
+                margin: 0;
+                padding: 0 10px;
+            }
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, '思源宋体', '宋体', SimSun, serif;
+                line-height: 1.6;
+                margin: 0 auto;
+                padding: 15px;
+                background: #f5f3f0;
+                text-indent: 2em;
+                -webkit-text-size-adjust: 100%;
             }
             .exhibit-section {
-                padding: 30px;
-                margin: 30px 0;
+                background: white;
+                padding: 20px;
+                margin: 20px 0;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                border-radius: 8px;
             }
             h2 {
-                font-size: 1.8rem;
-                margin: 2em 0 1.5em;
+                color: var(--primary-color);
+                border-bottom: 2px solid var(--accent-color);
+                padding-bottom: 8px;
+                font-size: 1.4rem;
+                margin: 1.5em 0 1em;
+                padding-left: 1em;
+            }
+            h2::before {
+                content: "◆";
+                margin-right: 0.5em;
+                color: var(--accent-color);
             }
             p {
-                font-size: 17px;
+                font-size: 15px;
+                line-height: 1.8;
+                color: #444;
+                margin: 1em 0;
             }
             .figure-group {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                gap: 20px;
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin: 15px 0;
+            }
+            figure {
+                margin: 0;
+                background: #f8f6f3;
+                border-radius: 6px;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+            }
+            .img-container {
+                width: 100%;
+                flex: 1 1 auto;
+                display: flex;
+                align-items: center;
+                background: #fff;
+                border-radius: 4px;
+                min-height: 150px; /* 降低最小高度 */
+                max-height: 40vh; /* 添加最大高度限制 */
+            }
+            img {
+                width: 100%;
+                height: auto;
+                max-height: 100%; /* 继承容器高度 */
+                object-fit: contain;
+                object-position: center;
+                background: white;
             }
             figcaption {
-                font-size: 0.9em;
+                min-height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 12px 20px;
+                font-size: 18px;
+                background: rgba(221, 217, 217, 0.807);
+                color: rgb(16, 10, 10);
+                border-radius: 6px;
+                line-height: 1.5;
             }
-        }
-    </style>
-</head>
-<body>
-    <!-- 正文内容保持不变 -->
-    <header class="header">
-        <h1>秦铜车马</h1>
-        <h1>中国古代机械复原设计</h1>
-    </header>
 
-    <div class="exhibit-section">
-        <h2>沉浸式文化导览区</h2>
-        
-        <article>
-            <h3>1、出土记录</h3>
-            <div class="figure-group">
-                <figure>
-                    <img src="2.jpeg" alt="铜车马出土现场">
-                    <figcaption>铜车马随葬坑原始状态（1980年摄）</figcaption>
-                </figure>
-                <figure>
-                    <img src="3.jpeg" alt="修复过程记录">
-                    <figcaption>文物专家进行碎片整理（1982年工作照）</figcaption>
-                </figure>
-            </div>
-            <p>铜车马随葬坑为长方形竖穴土坑，底部设木椁安置两乘铜马车。虽木椁腐朽导致上层填土塌压，使铜车马碎裂为3000余片，所幸墓坑未经盗扰，碎片位置保持原始状态。自1980年发现至1988年，历时八年完成两乘马车的完整复原。</p>
-        </article>
+            /* 手机端专属适配 */
+            @media (max-width: 480px) {
+                .img-container {
+                    min-height: 120px;
+                    max-height: 30vh;
+                }
+                figcaption {
+                    font-size: 16px;
+                    font-size: 0.9em;
+                    font-weight: 700;
+                    line-height: 1.4;
+                    padding: 12px 10px;
+                    background: rgba(208, 206, 206, 0.85);
+                    color: white;
+                    border-radius: 4px;
+                    
+                }
+            }
+            figcaption {
+                font-size: 13px;
+                color: #666;
+                margin-top: 8px;
+                text-align: center;
+                line-height: 1.4;
+                padding: 6px 10px;
+            }
+            video {
+                width: 100%;
+                border-radius: 8px;
+                margin: 15px 0;
+            }
 
-        <article>
-            <h3>2、历史背景</h3>
-            <div class="figure-group">
-                <figure>
-                    <img src="4.png" alt="一号铜马车">
-                    <figcaption style="text-align: center;">秦陵一号铜马车（立车）&nbsp;</figcaption>
-                </figure>
-                <figure>
-                    <img src="5.png" alt="二号铜马车">
-                    <figcaption style="text-align: center;">秦陵二号铜马车（安车）&nbsp;</figcaption>
-                </figure>
-            </div>
-            <p>1978年6月出土于秦陵封土西侧的秦铜车马，通体彩绘，结构精巧，现藏秦始皇帝陵博物院。两乘马车分别代表"立车"与"安车"形制，总重逾14千克，采用铸造、镶嵌、焊接等十余种工艺，其彩绘纹饰与浮雕结合，精准再现马车各部位材质与构造，堪称中国古代青铜铸造技艺的巅峰之作。</p>
-        </article>
+            /* 平板及以上适配 */
+            @media (min-width: 480px) {
+                h1 { font-size: 2.4rem; }
+                h2 { font-size: 1.5rem; }
+                p { font-size: 16px; }
+                .header { min-height: 60vh; }
+            }
 
-        <article>
-            <h3>3、构造与工艺</h3>
-            <figure>
-                <img src="6.png" alt="结构解析图">
-                <figcaption style="text-align: center;">铜车马结构分解示意图&nbsp;&nbsp;</figcaption>
-            </figure>
-            <p>全车采用分体铸造后组装的工艺体系，运用嵌铸、焊接、子母扣等机械连接工艺，单辕双轮的形制体现秦代典型马车特征。金银饰件的运用与蓝、绿、白三色彩绘相得益彰，展现秦代工匠对材质表现的深刻理解。</p>
-        </article>
-    </div>
+            /* PC端适配 */
+            @media (min-width: 768px) {
+                body {
+                    max-width: 1200px;
+                    padding: 30px;
+                }
+                .header {
+                    height: 70vh;
+                    padding: 2rem 4rem;
+                    gap: 1.5rem;
+                }
+                h1 {
+                    font-size: 3.2rem;
+                    text-shadow: 0 0 16px rgba(184, 159, 126, 0.9),
+                                0 4px 8px rgba(0,0,0,0.6);
+                }
+                .exhibit-section {
+                    padding: 30px;
+                    margin: 30px 0;
+                }
+                h2 {
+                    font-size: 1.8rem;
+                    margin: 2em 0 1.5em;
+                }
+                p {
+                    font-size: 17px;
+                }
+                .figure-group {
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                    gap: 20px;
+                }
+                figcaption {
+                    font-size: 1.1em;
+                    background: rgba(0,0,0,0.85);
+                    color: white;
+                    padding: 18px 24px;
+                    border-radius: 6px;
+                    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+                    line-height: 1.6;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 正文内容保持不变 -->
+        <header class="header">
+            <h1>秦铜车马</h1>
+            <h1>中国古代机械复原设计</h1>
+        </header>
 
-    <div class="exhibit-section">
-        <h2>核心技术展示区</h2>
-        
-        <article>
-            <h3>1、数字建模工程</h3>
-            <div class="figure-group">
-                <figure>
-                    <img src="7.png" alt="三维建模过程">
-                    <figcaption style="text-align: center;">车轮三维建模过程&nbsp;&nbsp;</figcaption>
-                </figure>
-                <figure>
-                    <img src="8.png" alt="零件装配演示">
-                    <figcaption style="text-align: center;">车辕装配约束分析&nbsp;&nbsp;</figcaption>
-                </figure>
-                <figure>
-                    <img src="9.png" alt="车厢结构还原">
-                    <figcaption style="text-align: center;">车厢结构数字还原&nbsp;&nbsp;</figcaption>
-                </figure>
-                <figure>
-                    <img src="10.png" alt="马匹造型建模">
-                    <figcaption style="text-align: center;">马匹造型数字建模&nbsp;&nbsp;</figcaption>
-                </figure>
-                <figure>
-                    <img src="11.png" alt="纹饰还原">
-                    <figcaption style="text-align: center;">传统纹饰数字还原&nbsp;&nbsp;</figcaption>
-                </figure>
-            </div>
-            <p>基于《中国古代机械文明史》等典籍记载，通过SolidWorks进行精密三维建模，严格遵循出土文物尺寸数据。</p>
-        </article>
+        <div class="exhibit-section">
+            <h2>沉浸式文化导览区</h2>
+            
+            <article>
+                <h3>1、出土记录</h3>
+                <div class="figure-group">
+                    <figure>
+                        <img src="2.jpeg" alt="铜车马出土现场">
+                        <figcaption>铜车马随葬坑原始状态（1980年摄）</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="3.jpeg" alt="修复过程记录">
+                        <figcaption>文物专家进行碎片整理（1982年工作照）</figcaption>
+                    </figure>
+                </div>
+                <p>铜车马随葬坑为长方形竖穴土坑，底部设木椁安置两乘铜马车。虽木椁腐朽导致上层填土塌压，使铜车马碎裂为3000余片，所幸墓坑未经盗扰，碎片位置保持原始状态。自1980年发现至1988年，历时八年完成两乘马车的完整复原。</p>
+            </article>
 
-        <article>
-            <h3>2、智能造物工坊</h3>
-            <div class="figure-group">
-                <figure>
-                    <img src="12.png" alt="3D打印过程">
-                    <figcaption style="text-align: center;">车轮部件3D打印&nbsp;&nbsp;</figcaption>
-                </figure>
-                <figure>
-                    <img src="13.png" alt="激光切割应用">
-                    <figcaption style="text-align: center;">马匹构件激光切割&nbsp;&nbsp;</figcaption>
-                </figure>
-                <figure>
-                    <img src="14.png" alt="金属粉末烧结">
-                    <figcaption style="text-align: center;">青铜部件金属粉末烧结&nbsp;&nbsp;</figcaption>
-                </figure>
-                <figure>
-                    <img src="15.png" alt="激光雕刻细节">
-                    <figcaption style="text-align: center;">装饰纹样激光雕刻细节&nbsp;&nbsp;</figcaption>
-                </figure>
-                <figure>
-                    <img src="16.png" alt="表面质感处理">
-                    <figcaption style="text-align: center;">铸造表面质感处理&nbsp;&nbsp;</figcaption>
-                </figure>
-            </div>
-            <p>采用分层制造技术展示不同材料的应用效果：青铜部件使用金属粉末烧结，装饰纹样采用精密激光雕刻，充分还原古代铸造的表面质感。</p>
-        </article>
+            <article>
+                <h3>2、历史背景</h3>
+                <div class="figure-group">
+                    <figure>
+                        <img src="4.png" alt="一号铜马车">
+                        <figcaption style="text-align: center;">秦陵一号铜马车（立车）&nbsp;</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="5.png" alt="二号铜马车">
+                        <figcaption style="text-align: center;">秦陵二号铜马车（安车）&nbsp;</figcaption>
+                    </figure>
+                </div>
+                <p>1978年6月出土于秦陵封土西侧的秦铜车马，通体彩绘，结构精巧，现藏秦始皇帝陵博物院。两乘马车分别代表"立车"与"安车"形制，总重逾14千克，采用铸造、镶嵌、焊接等十余种工艺，其彩绘纹饰与浮雕结合，精准再现马车各部位材质与构造，堪称中国古代青铜铸造技艺的巅峰之作。</p>
+            </article>
 
-        <article>
-            <h3>3、虚拟仿真动画</h3>
-            <video controls poster="17.png">
-                <source src="视频1.mp4" type="video/mp4">
-                <track label="中文" kind="subtitles" srclang="zh" src="captions.vtt" default>
-            </video>
-            <p>通过Cinema 4D实现的运动仿真，精确还原车马联动机制。特别呈现青铜氧化前的金黄光泽，图17展示光影效果如何增强结构表现的清晰度。</p>
-        </article>
-    </div>
-</body>
-</html>
+            <article>
+                <h3>3、构造与工艺</h3>
+                <figure>
+                    <img src="6.png" alt="结构解析图">
+                    <figcaption style="text-align: center;">铜车马结构分解示意图&nbsp;&nbsp;</figcaption>
+                </figure>
+                <p>全车采用分体铸造后组装的工艺体系，运用嵌铸、焊接、子母扣等机械连接工艺，单辕双轮的形制体现秦代典型马车特征。金银饰件的运用与蓝、绿、白三色彩绘相得益彰，展现秦代工匠对材质表现的深刻理解。</p>
+            </article>
+        </div>
+
+        <div class="exhibit-section">
+            <h2>核心技术展示区</h2>
+            
+            <article>
+                <h3>1、数字建模工程</h3>
+                <div class="figure-group">
+                    <figure>
+                        <img src="7.png" alt="三维建模过程">
+                        <figcaption style="text-align: center;">车轮三维建模过程&nbsp;&nbsp;</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="8.png" alt="零件装配演示">
+                        <figcaption style="text-align: center;">车辕装配约束分析&nbsp;&nbsp;</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="9.png" alt="车厢结构还原">
+                        <figcaption style="text-align: center;">车厢结构数字还原&nbsp;&nbsp;</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="10.png" alt="马匹造型建模">
+                        <figcaption style="text-align: center;">马匹造型数字建模&nbsp;&nbsp;</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="11.png" alt="纹饰还原">
+                        <figcaption style="text-align: center;">传统纹饰数字还原&nbsp;&nbsp;</figcaption>
+                    </figure>
+                </div>
+                <p>基于《中国古代机械文明史》等典籍记载，通过SolidWorks进行精密三维建模，严格遵循出土文物尺寸数据。</p>
+            </article>
+
+            <article>
+                <h3>2、智能造物工坊</h3>
+                <div class="figure-group">
+                    <figure>
+                        <img src="12.png" alt="3D打印过程">
+                        <figcaption style="text-align: center;">车轮部件3D打印&nbsp;&nbsp;</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="13.png" alt="激光切割应用">
+                        <figcaption style="text-align: center;">马匹构件激光切割&nbsp;&nbsp;</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="14.png" alt="金属粉末烧结">
+                        <figcaption style="text-align: center;">青铜部件金属粉末烧结&nbsp;&nbsp;</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="15.png" alt="激光雕刻细节">
+                        <figcaption style="text-align: center;">装饰纹样激光雕刻细节&nbsp;&nbsp;</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="16.png" alt="表面质感处理">
+                        <figcaption style="text-align: center;">铸造表面质感处理&nbsp;&nbsp;</figcaption>
+                    </figure>
+                </div>
+                <p>采用分层制造技术展示不同材料的应用效果：青铜部件使用金属粉末烧结，装饰纹样采用精密激光雕刻，充分还原古代铸造的表面质感。</p>
+            </article>
+
+            <article>
+                <h3>3、虚拟仿真动画</h3>
+                <video controls poster="17.png">
+                    <source src="视频1.mp4" type="video/mp4">
+                    <track label="中文" kind="subtitles" srclang="zh" src="captions.vtt" default>
+                </video>
+                <p>通过Cinema 4D实现的运动仿真，精确还原车马联动机制。特别呈现青铜氧化前的金黄光泽，图17展示光影效果如何增强结构表现的清晰度。</p>
+            </article>
+        </div>
+    </body>
+    </html>
